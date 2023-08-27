@@ -1,7 +1,7 @@
 import { Router} from "express";
 const rotaLogin = new Router();
 rotaLogin.get('/', (requisicao, resposta) => {
-    resposta.redirect("/login.html");   
+    resposta.redirect("/aluno11-ppiadsead/login.html");   
 })
 .post('/', (requisicao, resposta) => {
     const usuario = requisicao.body.usuario;
@@ -9,7 +9,7 @@ rotaLogin.get('/', (requisicao, resposta) => {
     if (usuario && senha && usuario === 'julio' && senha === '123')
     {
         requisicao.session.usuarioLogado=true;
-        resposta.redirect('/cadastroCliente.html');
+        resposta.redirect("/aluno11-ppiadsead/cadastroCliente.html");
     }
     else{
         resposta.send("<p>Falha no login!</p><br/><button> onclick='history.back()'>Tentar Novamente!")
