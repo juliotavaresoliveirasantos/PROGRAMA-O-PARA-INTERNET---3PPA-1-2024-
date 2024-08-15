@@ -2,15 +2,14 @@ import express from 'express';
 import rotaLogin  from './rotas/rotaLogin.js';
 import session, { Cookie } from 'express-session';
 import autenticar from './seguranca/autenticar.js';
-import Cliente from './Backend/Modelo/Cliente.js';
 
-const host = '0.0.0.0';
-const porta = 3211;
+const host = 'localhost';
+const porta = 4000;
 
 const app = express();
 
 app.use(session({
-    secret: 'professorzao',
+    secret: 'prof3ssorm4n3ir0',
     resave: true,
     saveUninitialized: false,
     cookie: {
@@ -24,15 +23,8 @@ app.use("/login", rotaLogin);
 app.use(express.static('./publico'));
 app.use (autenticar, express.static('./protegido'));
 
-app.use ('/clientes', (requisicao, resposta)=>{
-    const cliente = new Cliente();
-    cliente.consultar('').then((listaClientes)=>{
-      resposta.json(listaClientes);
-    })
-}) 
-
 app.listen(porta, host, () => {
-    console.log(`Servidor rodando em http://localhost:${3211}`);
+    console.log(`Servidor rodando em http://localhost:${4000}`);
   });
 
 
